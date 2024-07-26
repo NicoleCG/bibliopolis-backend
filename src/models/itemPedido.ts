@@ -1,7 +1,8 @@
+import { Libro } from "./libro";
 
 export class ItemPedido {
     constructor(
-        public libro: string,
+        public libro: Libro,
         public cantidad: number
     ){}
 }

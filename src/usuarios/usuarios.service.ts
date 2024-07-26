@@ -11,7 +11,7 @@ export class UsuariosService {
     crearUsuario(nuevoUsuario: Usuario): void {
         // Revisar que el correo usuario sea unico
         if (!this.usuarios.find(usuario => usuario.correoElectronico == nuevoUsuario.correoElectronico)){
-            let pedidos: Pedido[] = [];
+            let pedidos: Pedido[] = []; // Se asume que un usuario nuevo no tiene pedidos
 
             nuevoUsuario.id = this.usuarios.length + 1;  
             nuevoUsuario.historialPedidos = pedidos;

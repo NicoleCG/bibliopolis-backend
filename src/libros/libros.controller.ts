@@ -1,6 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, Res } from '@nestjs/common';
 import { LibrosService } from './libros.service';
 import { Libro } from 'src/models/libro';
+import { Response } from 'express';
+
 
 @Controller('libros')
 export class LibrosController {
@@ -8,8 +10,14 @@ export class LibrosController {
 
     // Crear un libro nuevo con ISBN único
     @Post()
-    crearLibro( @Body() libro: Libro): void {
-        this.servicio.crearLibro(libro);
+    crearLibro( @Body() libro: Libro, @Res() response: Response): void {
+        libro = this.servicio.crearLibro(libro);
+
+        if (!libro){
+            response.status(404).send('Libro ya existe');
+        } else {
+            response.status(200).send(libro);
+        }
     }
 
     // Obtener libro según ISBN

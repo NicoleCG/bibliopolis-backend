@@ -1,10 +1,9 @@
 import { ItemPedido } from "./itemPedido";
-import { Usuario } from "./usuario";
 
 export class Pedido {
     constructor(
         public id: number,
-        public usuario: Usuario,
+        public usuario: string, // Se asume que corresponde al ID del usuario
         public fechaPedido: Date,
         public estado: string,
         public total: number,
