@@ -6,10 +6,12 @@ export class LibrosService {
     private libros: Libro[] = [];
 
     // Crear un libro nuevo con ISBN único
-    crearLibro(nuevoLibro): void {
+    crearLibro(nuevoLibro): Libro {
         if (!this.libros.find(libro => libro.isbn == nuevoLibro.isbn)){
             this.libros.push(nuevoLibro);
+            return nuevoLibro;
         }
+        return null
     }
 
     // Obtener libro según ISBN
