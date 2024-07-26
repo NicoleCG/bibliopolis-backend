@@ -27,6 +27,7 @@ export class UsuariosService {
                 return usuario;
             }
         }
+        return null;
     }
 
     // Obtener todos los usuarios (excluir password)
